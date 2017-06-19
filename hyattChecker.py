@@ -5,7 +5,7 @@ import credentials, time
 city = 'Austin'
 checkInDate = 'Oct/06/2017'
 checkOutDate = 'Oct/07/2017'
-hotelName = 'Hyatt Place Austin Downtown'
+hotelLookingFor = 'Hyatt Place Austin Downtown'
 
 
 options = webdriver.ChromeOptions()
@@ -63,6 +63,19 @@ searchResults = driver.find_elements_by_class_name('search-result-item')
 
 
 for result in searchResults:
-    resultName = result.find_element_by_class_name('property_name')
-    if resultName.text == hotelName:
-        print(resultName.text)
+    hotelFound = result.find_element_by_class_name('property_name')
+    if hotelFound.text == hotelLookingFor:
+        selectHotelButton = result.find_element_by_class_name('check-rates-btn')
+        selectHotelButton.click()
+        hyattPointsCheckbox = driver.find_element_by_name('gp_points_rnr')
+        hyattPointsCheckbox.click()
+
+        # go through list and see what is contained
+        listOfOptions = driver.find_elements_by_id('mycarousel')
+        for option in listOfOptions:
+            rateTab = option.find_element_by_class_name('rateTab')
+            print(rateTab.text)
+        break
+
+# searching should be done now
+driver.close()
