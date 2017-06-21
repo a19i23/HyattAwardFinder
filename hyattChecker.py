@@ -69,7 +69,7 @@ for result in searchResults:
         selectHotelButton.click()
         hyattPointsCheckbox = driver.find_element_by_name('gp_points_rnr')
         hyattPointsCheckbox.click()
-
+        time.sleep(3)
         # go through list and see what is contained
         listOfOptions = driver.find_elements_by_id('mycarousel')
         for option in listOfOptions:
