@@ -9,6 +9,7 @@ hotelLookingFor = 'Hyatt Place Austin Downtown' #edit this
 
 messageHeader = checkInDate + " - "+ checkOutDate+ "\n" +"Award available at: " +hotelLookingFor + "\n\n"
 
+awardsFound = False
 def main():
     options = webdriver.ChromeOptions()
     # options.add_argument('headless')
@@ -77,6 +78,7 @@ def main():
             listOfRateType = listOfOptionsElement.find_elements_by_name('rate_type')
             i = 1
             for ratetype in listOfRateType:
+                awardsFound = True
                 awardMessage += str(i)+". "+ratetype.text + "\n\n"
                 print(ratetype.text)
                 i+=1
@@ -85,12 +87,13 @@ def main():
     # searching should be done now
     driver.close()
 
-    emailBody = messageHeader + awardMessage
-    subject = "Hyatt award notification"
-    message = 'Subject: {}\n\n{}'.format(subject, emailBody)
+    if awardsFound == True:
+        emailBody = messageHeader + awardMessage
+        subject = "Hyatt award notification"
+        message = 'Subject: {}\n\n{}'.format(subject, emailBody)
 
-    #send email
-    sendemail(credentials.gmailUserName, #from
+        #send email
+        sendemail(credentials.gmailUserName, #from
               credentials.gmailPassword, #to
               message,              #message
               credentials.gmailUserName,
