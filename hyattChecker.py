@@ -16,7 +16,7 @@ def main():
     options.add_argument('window-size=1200x600')
 
     # path to chrome driver
-    pathToChrome = '/Users/a19i23/PycharmProjects/PythonWebScraper/chromedriver'
+    pathToChrome = credentials.pathToChromeDriver
 
     # intialize the driver
     driver = webdriver.Chrome(executable_path=pathToChrome, chrome_options=options)
