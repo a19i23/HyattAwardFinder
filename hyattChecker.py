@@ -1,12 +1,12 @@
 from selenium import webdriver
 import credentials, time, smtplib
 
-
 # City where you want to go and date looking for
-city = 'Austin'
-checkInDate = 'Oct/06/2017'
-checkOutDate = 'Oct/07/2017'
-hotelLookingFor = 'Hyatt Place Austin Downtown'
+city = 'Austin'                 # edit this
+checkInDate = 'Oct/06/2017'     # edit this
+checkOutDate = 'Oct/07/2017'    # edit this
+hotelLookingFor = 'Hyatt Place Austin Downtown' #edit this
+
 messageHeader = checkInDate + " - "+ checkOutDate+ "\n" +"Award available at: " +hotelLookingFor + "\n\n"
 
 def main():
