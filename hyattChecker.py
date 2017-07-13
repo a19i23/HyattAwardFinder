@@ -14,7 +14,7 @@ def main():
     options = webdriver.ChromeOptions()
     # options.add_argument('headless')
     # set window size
-    options.add_argument('window-size=1200x600')
+    options.add_argument('window-size=1024x768')
 
     # path to chrome driver
     pathToChrome = credentials.pathToChromeDriver
